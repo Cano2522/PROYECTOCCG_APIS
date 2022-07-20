@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'omniclass41',
     'proveedores',
     'rolesorg',
+    'unidadesmedida',
     'drf_yasg',
     'rest_framework',
     'corsheaders',
