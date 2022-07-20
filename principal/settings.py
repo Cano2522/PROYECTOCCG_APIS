@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'omniclass23',
     'omniclass35',
     'omniclass41',
+    'proveedores',
     'drf_yasg',
     'rest_framework',
     'corsheaders',
