@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'datosgeograficos',
     'omniclass34',
     'omniclass23',
+    'omniclass35',
     'drf_yasg',
     'rest_framework',
     'corsheaders',
