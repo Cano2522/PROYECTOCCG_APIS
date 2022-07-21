@@ -45,6 +45,7 @@ urlpatterns = [
     path('apiproveedores/', include('proveedores.urls')),
     path('apirolesorg/', include('rolesorg.urls')),
     path('apiunidadesmedida/', include('unidadesmedida.urls')),
+    path('apiuniformat/', include('uniformat.urls')),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

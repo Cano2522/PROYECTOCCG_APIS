@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'proveedores',
     'rolesorg',
     'unidadesmedida',
+    'uniformat',
     'drf_yasg',
     'rest_framework',
     'corsheaders',
