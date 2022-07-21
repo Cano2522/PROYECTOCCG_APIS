@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from usuarios.views import Login, Logout, UserToken
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -47,6 +48,10 @@ urlpatterns = [
     path('apiunidadesmedida/', include('unidadesmedida.urls')),
     path('apiuniformat/', include('uniformat.urls')),
     path('apimateriales/', include('materiales.urls')),
+    path('apiusuarios/', include('usuarios.urls')),
+    path('login/', Login.as_view(), name = 'Login'),
+    path('logout/', Logout.as_view(), name = 'Logout'),
+    path('refreshtoken/',UserToken.as_view(), name = 'refresh_token'),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

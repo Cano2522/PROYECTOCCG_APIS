@@ -47,14 +47,18 @@ INSTALLED_APPS = [
     'unidadesmedida',
     'uniformat',
     'materiales',
+    'usuarios',
     'drf_yasg',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 ]
 
 SWAGGER_SETTINGS = {
     'DOC_EXPANSION': 'none'
 }
+
+TOKEN_EXPIRED_AFTER_SECONDS = 28800
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,9 +133,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -139,6 +143,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL = 'usuarios.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
