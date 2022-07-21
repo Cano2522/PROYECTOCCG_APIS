@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rolesorg',
     'unidadesmedida',
     'uniformat',
+    'materiales',
     'drf_yasg',
     'rest_framework',
     'corsheaders',
