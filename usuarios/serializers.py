@@ -13,12 +13,12 @@ from usuarios.models import (
 class UserTokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username','Correo','Nombre','Apellidos', 'Rol']
+        fields = ['username','correo','nombre','apellidos', 'rol']
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id','username','password','Correo','Nombre','Apellidos','Genero','Rol','fechaCreacion']
+        fields = ['id','username','password','correo','nombre','apellidos','genero','rol','fechaCreacion']
 
     def create(self,validated_data):
         usuario = User(**validated_data)
@@ -35,7 +35,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
 class EditarUsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id','username','Correo','Nombre','Apellidos','Genero','Rol']
+        fields = ['id','username','correo','nombre','apellidos','genero','rol']
 
 class ListarUsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,12 +45,12 @@ class ListarUsuarioSerializer(serializers.ModelSerializer):
         return {
             'id': instance['id'],
             'username': instance['username'],
-            'Correo': instance['Correo'],
+            'correo': instance['correo'],
             'password': instance['password'],
-            'Nombre': instance['Nombre'],
-            'Apellidos': instance['Apellidos'],
-            'Genero': instance['Genero'],
-            'Rol': instance['Rol'],
+            'nombre': instance['nombre'],
+            'apellidos': instance['apellidos'],
+            'genero': instance['genero'],
+            'rol': instance['rol'],
             'fechaCreacion': instance['fechaCreacion'],
             'last_login': instance['last_login']
         }
@@ -70,12 +70,12 @@ class PasswordSerializer(serializers.Serializer):
 class EmpleadoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empleado
-        fields = ['idEmpleado','fechaNac','lugarNac','RFC','CURP','Cel','Calle','noInt','noExt','fk_User','fk_CP']
+        fields = ['idEmpleado','fechaNac','lugarNac','RFC','CURP','celular','calle','noInt','noExt','fk_User','fk_CP']
 
 class DatosLaboralesSerializer(serializers.ModelSerializer):
     class Meta:
         model = DatosLaborales
-        fields = ['idDatosLab','Codigo','fechaIng','fechaBaja','sueldoMensual','Referencia1','Referencia2','Ubicacion','Procedencia','Observaciones','fk_Empleado','fk_Cargo','fk_Contrato']
+        fields = ['idDatosLab','codigo','fechaIng','fechaBaja','sueldoMensual','referencia1','referencia2','ubicacion','procedencia','observaciones','fk_Empleado','fk_Cargo','fk_Contrato']
 
 class HistorialUsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -86,14 +86,14 @@ class HistorialUsuarioSerializer(serializers.ModelSerializer):
 class DepartamentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Departamento
-        fields = ['idDepto','Nombre']
+        fields = ['idDepto','nombre']
 
 class CargoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cargo
-        fields = ['idCargo','Nombre','fk_Depto']
+        fields = ['idCargo','nombre','fk_Depto']
 
 class ContratoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contrato
-        fields = ['idContrato','Tipo']
+        fields = ['idContrato','tipo']

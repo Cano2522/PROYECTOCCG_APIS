@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
+from usuarios.authentication_mixins import Authentication
 from omniclass35.serializers import (
     OMC35Nivel1Serializer,
     OMC35Nivel2Serializer,
@@ -12,7 +13,7 @@ from omniclass35.serializers import (
 # Create your views here.
 
 #TABLAS OMNICLAS 35 NIVEL 1
-class OMC35Nivel1(viewsets.ModelViewSet):
+class OMC35Nivel1(Authentication,viewsets.ModelViewSet):
     serializer_class = OMC35Nivel1Serializer
 
     def get_queryset(self, pk=None):
@@ -35,17 +36,17 @@ class OMC35Nivel1(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
     def destroy(self, request, pk=None):
         registro = self.get_queryset().filter(idOmc35N1=pk).first()
         if registro:
             registro.delete()
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
-        return Response({'error':'No existe un Registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
 #TABLAS OMNICLAS 35 NIVEL 2
-class OMC35Nivel2(viewsets.ModelViewSet):
+class OMC35Nivel2(Authentication,viewsets.ModelViewSet):
     serializer_class = OMC35Nivel2Serializer
 
     def get_queryset(self, pk=None):
@@ -68,17 +69,17 @@ class OMC35Nivel2(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
     def destroy(self, request, pk=None):
         registro = self.get_queryset().filter(idOmc35N2=pk).first()
         if registro:
             registro.delete()
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
-        return Response({'error':'No existe un Registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
 #TABLAS OMNICLAS 35 NIVEL 3
-class OMC35Nivel3(viewsets.ModelViewSet):
+class OMC35Nivel3(Authentication,viewsets.ModelViewSet):
     serializer_class = OMC35Nivel3Serializer
 
     def get_queryset(self, pk=None):
@@ -101,17 +102,17 @@ class OMC35Nivel3(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
     def destroy(self, request, pk=None):
         registro = self.get_queryset().filter(idOmc35N3=pk).first()
         if registro:
             registro.delete()
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
-        return Response({'error':'No existe un Registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
 #TABLAS OMNICLAS 35 NIVEL 4
-class OMC35Nivel4(viewsets.ModelViewSet):
+class OMC35Nivel4(Authentication,viewsets.ModelViewSet):
     serializer_class = OMC35Nivel4Serializer
 
     def get_queryset(self, pk=None):
@@ -134,17 +135,17 @@ class OMC35Nivel4(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
     def destroy(self, request, pk=None):
         registro = self.get_queryset().filter(idOmc35N4=pk).first()
         if registro:
             registro.delete()
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
-        return Response({'error':'No existe un Registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
 #TABLAS OMNICLAS 35 NIVEL 5
-class OMC35Nivel5(viewsets.ModelViewSet):
+class OMC35Nivel5(Authentication,viewsets.ModelViewSet):
     serializer_class = OMC35Nivel5Serializer
 
     def get_queryset(self, pk=None):
@@ -167,17 +168,17 @@ class OMC35Nivel5(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
     def destroy(self, request, pk=None):
         registro = self.get_queryset().filter(idOmc35N5=pk).first()
         if registro:
             registro.delete()
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
-        return Response({'error':'No existe un Registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
 #TABLAS OMNICLAS 35 NIVEL 6
-class OMC35Nivel6(viewsets.ModelViewSet):
+class OMC35Nivel6(Authentication,viewsets.ModelViewSet):
     serializer_class = OMC35Nivel6Serializer
 
     def get_queryset(self, pk=None):
@@ -200,11 +201,11 @@ class OMC35Nivel6(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
     def destroy(self, request, pk=None):
         registro = self.get_queryset().filter(idOmc35N6=pk).first()
         if registro:
             registro.delete()
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
-        return Response({'error':'No existe un Registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)

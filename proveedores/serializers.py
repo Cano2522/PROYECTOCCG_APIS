@@ -12,17 +12,17 @@ from proveedores.models import (
 class ProveedorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Proveedor
-        fields = ['idProveedor','Nombre','RFC','Email','Observaciones','logoImg','urlSitioWeb','Fabricante','Activo']
+        fields = ['idProveedor','nombre','RFC','email','fabricante','activo','observaciones','logoImg','urlSitioWeb']
 
 class MarcaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Marca
-        fields = ['idMarca','Nombre','Activo']
+        fields = ['idMarca','nombre','activo']
 
 class SectorMercadoSerializer(serializers.ModelSerializer):
     class Meta:
         model = SectorMercado
-        fields = ['idSecMer','Nombre']
+        fields = ['idSecMer','nombre']
 
 class ProveedorMarcaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,7 +32,7 @@ class ProveedorMarcaSerializer(serializers.ModelSerializer):
 class SucursalProvSerializer(serializers.ModelSerializer):
     class Meta:
         model = SucursalProv
-        fields = ['idSucProv','Alias','numTel','contactoAten','nomSuperior','cargoSuperior','Calle','noInt','noExt','Colonia','fk_CP','fk_Proveedor']
+        fields = ['idSucProv','alias','numTel','contactoAten','nomSuperior','cargoSuperior','calle','noInt','noExt','colonia','fk_CP','fk_Proveedor']
 
 class SectorProvSerializer(serializers.ModelSerializer):
     class Meta:

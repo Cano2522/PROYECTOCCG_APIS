@@ -4,4 +4,4 @@ from rolesorg.models import RolesOrg
 class RolesOrgSerializer(serializers.ModelSerializer):
     class Meta:
         model = RolesOrg
-        fields = ['idRolOrg','cveMo','Codigo','Consecutivo','descriEng','descriSpa','definicionEng','definicionSpa','fuenteInf','fecRegInf']
+        fields = ['idRolOrg','cveMo','codigo','consecutivo','descriEng','descriSpa','definicionEng','definicionSpa','fuenteInf','fecRegInf']

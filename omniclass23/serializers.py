@@ -11,29 +11,29 @@ from omniclass23.models import (
 class OMC23Nivel1Serializer(serializers.ModelSerializer):
     class Meta:
         model = OMC23Nivel1
-        fields = ['idOmc23N1','Codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg']
+        fields = ['idOmc23N1','codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg']
 
 class OMC23Nivel2Serializer(serializers.ModelSerializer):
     class Meta:
         model = OMC23Nivel2
-        fields = ['idOmc23N2','numMat','Codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','regFinal','anioReg','regUsuario','fk_Omc23N1']
+        fields = ['idOmc23N2','numMat','codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','regFinal','anioReg','regUsuario','fk_Omc23N1']
 
 class OMC23Nivel3Serializer(serializers.ModelSerializer):
     class Meta:
         model = OMC23Nivel3
-        fields = ['idOmc23N3','numMat','Codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N2']
+        fields = ['idOmc23N3','numMat','codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N2']
 
 class OMC23Nivel4Serializer(serializers.ModelSerializer):
     class Meta:
         model = OMC23Nivel4
-        fields = ['idOmc23N4','numMat','Codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N3']
+        fields = ['idOmc23N4','numMat','codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N3']
 
 class OMC23Nivel5Serializer(serializers.ModelSerializer):
     class Meta:
         model = OMC23Nivel5
-        fields = ['idOmc23N5','numMat','Codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N4']
+        fields = ['idOmc23N5','numMat','codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N4']
 
 class OMC23Nivel6Serializer(serializers.ModelSerializer):
     class Meta:
         model = OMC23Nivel6
-        fields = ['idOmc23N6','numMat','Codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N5']
+        fields = ['idOmc23N6','numMat','codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg','regFinal','regUsuario','fk_Omc23N5']

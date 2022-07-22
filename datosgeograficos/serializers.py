@@ -9,17 +9,17 @@ from datosgeograficos.models import (
 class PaisSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pais
-        fields = ['idPais', 'Nombre', 'ISO', 'codNumIso', 'formDirec']
+        fields = ['idPais', 'nombre', 'ISO', 'codNumIso', 'formDirec']
 
 class EstadoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estado
-        fields = ['idEstado', 'Nombre', 'ISO', 'fk_Pais']
+        fields = ['idEstado', 'nombre', 'ISO', 'fk_Pais']
 
 class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mundeleg
-        fields = ['idMunDeleg', 'Nombre', 'fk_Estado']
+        fields = ['idMunDeleg', 'nombre', 'fk_Estado']
 
 class CPSerializer(serializers.ModelSerializer):
     class Meta:

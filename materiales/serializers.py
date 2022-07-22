@@ -6,7 +6,7 @@ from materiales.models import (
     Esfuerzo,
     ValorEsfuerzo,
     TipoResistencia,
-    AplPrincipales,
+    ApliPrincipales,
     TMA,
     Revenimiento,
     Densidad,
@@ -22,17 +22,17 @@ from materiales.models import (
 class MaterialesSerializer(serializers.ModelSerializer):  #ESTE ME DEBERIA SERVIR PARA GENERAR EL CONSECUTIVO
     class Meta:
         model = Materiales
-        fields = ['idMaterial','numMat','codigoOmc','Consecutivo','descriCorta','descriLarga','Comentarios','palabrasCve','desCorEng','desLargEng','fuenteInf','fecRegInf','codigoBimsa']
+        fields = ['idMaterial','numMat','codigoOmc','consecutivo','descriCorta','descriLarga','comentarios','palabrasCve','desCorEng','desLargEng','fuenteInf','fecRegInf','codigoBimsa']
 
 class ConcretoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Concreto
-        fields = ['idConcreto','numMat','Codigo','fk_Material','fk_ClasExpo','fk_SistColoc','fk_Densidad','fk_Reven','fk_FlujoRev','fk_FibraConcre','fk_ValEsf','fk_Tma','fk_AplPrinc']
+        fields = ['idConcreto','numMat','codigo','fk_Material','fk_ClasExpo','fk_SistColoc','fk_Densidad','fk_Reven','fk_FlujoRev','fk_FibraConcre','fk_ValEsf','fk_Tma','fk_AplPrinc']
 
 class CaracEspeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CaracEspe
-        fields = ['idCaracEspec','modElast','Acronimo','Edad','absorcionCap','Acronimo2','trabaExtend','Clase','Color','Comportamiento','conAire','conIonClor','tiempoPrueba','fk_IonClor','fk_Concreto']
+        fields = ['idCaracEspec','modElast','acronimo1','edad','absorcionCap','acronimo2','trabaExtend','clase','color','comportamiento','conAire','conIonClor','tiempoPrueba','fk_IonClor','fk_Concreto']
 
 class EsfuerzoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,17 +42,17 @@ class EsfuerzoSerializer(serializers.ModelSerializer):
 class ValorEsfuerzoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ValorEsfuerzo
-        fields = ['idValEsf','Valor','fk_Esfuerzo','fk_UniMed','fk_TipoResist']
+        fields = ['idValEsf','valor','fk_Esfuerzo','fk_UniMed','fk_TipoResist']
 
 class TipoResistenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoResistencia
-        fields = ['idTipoResist','Tipo']
+        fields = ['idTipoResist','tipo']
 
 class AplPrincipalesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AplPrincipales
-        fields = ['idAplPrinc','aplicaciones']
+        model = ApliPrincipales
+        fields = ['idApliPrincipales','aplicaciones']
 
 class TMASerializer(serializers.ModelSerializer):
     class Meta:
@@ -77,7 +77,7 @@ class SistColocacionSerializer(serializers.ModelSerializer):
 class ClasExposicionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClasExposicion
-        fields = ['idClasExpo','Categoria','Condicion','Clase','fk_AguaCem','fk_ValEsf']
+        fields = ['idClasExpo','categoria','condicion','clase','fk_AguaCem','fk_ValEsf']
 
 class FlujoRevSerializer(serializers.ModelSerializer):
     class Meta:
@@ -92,4 +92,4 @@ class IonCloruroSerializer(serializers.ModelSerializer):
 class FibraConcreSerializer(serializers.ModelSerializer):
     class Meta:
         model = FibraConcre
-        fields = ['idFibraCon','Tipo','tipoMaterial','Fibras']
+        fields = ['idFibraCon','tipo','tipoMaterial','fibras']

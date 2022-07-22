@@ -111,7 +111,7 @@ class UsuarioViewSet(Authentication,viewsets.GenericViewSet):
 
     def get_queryset(self):
         if self.queryset is None:
-            self.queryset = self.model.objects.all().values('id','username','Correo','password','Nombre','Apellidos','Genero','Rol','fechaCreacion','last_login')
+            self.queryset = self.model.objects.all().values('id','username','correo','password','nombre','apellidos','genero','rol','fechaCreacion','last_login')
         return self.queryset
     
     @action(detail=True, methods=['post'])

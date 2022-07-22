@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
+from usuarios.authentication_mixins import Authentication
 from uniformat.serializers import (
     UFTCategoriaSerializer,
     UFTNivel2Serializer,
@@ -10,7 +11,7 @@ from uniformat.serializers import (
 )
 # Create your views here.
 
-class UFTNivel1(viewsets.ModelViewSet):
+class UFTNivel1(Authentication,viewsets.ModelViewSet):
     serializer_class = UFTCategoriaSerializer
 
     def get_queryset(self, pk=None):
@@ -42,7 +43,7 @@ class UFTNivel1(viewsets.ModelViewSet):
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
         return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
-class UFTNivel2(viewsets.ModelViewSet):
+class UFTNivel2(Authentication,viewsets.ModelViewSet):
     serializer_class = UFTNivel2Serializer
 
     def get_queryset(self, pk=None):
@@ -74,7 +75,7 @@ class UFTNivel2(viewsets.ModelViewSet):
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
         return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
-class UFTNivel3(viewsets.ModelViewSet):
+class UFTNivel3(Authentication,viewsets.ModelViewSet):
     serializer_class = UFTNivel3Serializer
 
     def get_queryset(self, pk=None):
@@ -106,7 +107,7 @@ class UFTNivel3(viewsets.ModelViewSet):
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
         return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
-class UFTNivel4(viewsets.ModelViewSet):
+class UFTNivel4(Authentication,viewsets.ModelViewSet):
     serializer_class = UFTNivel4Serializer
 
     def get_queryset(self, pk=None):
@@ -138,7 +139,7 @@ class UFTNivel4(viewsets.ModelViewSet):
             return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
         return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
 
-class UFTNivel5(viewsets.ModelViewSet):
+class UFTNivel5(Authentication,viewsets.ModelViewSet):
     serializer_class = UFTNivel5Serializer
 
     def get_queryset(self, pk=None):

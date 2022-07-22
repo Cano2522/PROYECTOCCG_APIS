@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ve9hf*^*87wyij6z3c9tv)_hw@m03d(+7v5=o-*6m-srb3glz#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -95,14 +95,29 @@ WSGI_APPLICATION = 'principal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mssql',
+#         'NAME':'ccdatabase1',
+#         'USER': 'Adminccgroup',
+#         'PASSWORD': '78907ggr9786ccgAEC',
+#         'HOST': 'consultingconstructionserv.database.windows.net',  
+#         'PORT': '1433',
+
+#         'OPTIONS': {
+#              'driver': 'SQL Server Native Client 11.0', 
+#         },
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME':'ccdatabase1',
-        'USER': 'Adminccgroup',
-        'PASSWORD': '78907ggr9786ccgAEC',
-        'HOST': 'consultingconstructionserv.database.windows.net',  
-        'PORT': '1433',
+        'NAME':'ccdatabase',
+        'USER': 'eduardo',
+        'PASSWORD': 'admin1',
+        'HOST': 'CC-MX-BIM-005',  
+        'PORT': '',
 
         'OPTIONS': {
              'driver': 'SQL Server Native Client 11.0', 

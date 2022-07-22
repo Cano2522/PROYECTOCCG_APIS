@@ -8,15 +8,15 @@ from unidadesmedida.models import (
 class TipoUniMedSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoUniMed
-        fields = ['idTum','Tipo']
+        fields = ['idTum','tipo']
 
 class SubTipUniSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubTipUni
-        fields = ['idStu','Subtipo','fk_Tum']
+        fields = ['idStu','subtipo','fk_Tum']
 
 class UnidadesMedidaSerializer(serializers.ModelSerializer):
     class Meta:
         model = UnidadesMedida
-        fields = ['idUniMed','cveSat','Unidad','Sistema','fk_Stu']
+        fields = ['idUniMed','cveSat','unidad','sistema','fk_Stu']
 
