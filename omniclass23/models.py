@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class OMC23Nivel1(models.Model):
     idOmc23N1 = models.BigAutoField(auto_created=True, primary_key= True, serialize= False, verbose_name='idOmc23N1')
-    codigo = models.CharField(max_length=9, null=False)
+    codigo = models.CharField(max_length=9, null=False, unique=True)
     descriEng = models.CharField(max_length=100, null= False)
     descriSpa = models.CharField(max_length=110, null= False)
     definicionEng = models.CharField(max_length=200, null= False)
@@ -17,11 +17,12 @@ class OMC23Nivel1(models.Model):
 
     class Meta:
         db_table = "Omc23Nivel1"
+        verbose_name = 'Omc23Nivel1'
 
 class OMC23Nivel2(models.Model):
     idOmc23N2 = models.BigAutoField(auto_created=True, primary_key= True, serialize=False, verbose_name='idOmc23N2')
     numMat = models.IntegerField(blank= True, null= True)
-    codigo = models.CharField(max_length=9, null= False)
+    codigo = models.CharField(max_length=9, null= False, unique=True)
     descriEng = models.CharField(max_length=100, null= False)
     descriSpa = models.CharField(max_length=110,  null= False)
     definicionEng = models.CharField(max_length=300, blank= True, null= True)
@@ -38,11 +39,12 @@ class OMC23Nivel2(models.Model):
 
     class Meta:
         db_table = "Omc23Nivel2"
+        verbose_name = 'Omc23Nivel2'
 
 class OMC23Nivel3(models.Model):
     idOmc23N3 = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idOmc23N3')
     numMat = models.IntegerField(blank= True, null= True)
-    codigo = models.CharField(max_length=9, null=False)
+    codigo = models.CharField(max_length=9, null=False, unique=True)
     descriEng = models.CharField(max_length=100, null=False)
     descriSpa = models.CharField(max_length=110, null=False)
     definicionEng = models.CharField(max_length=350, blank= True, null= True)
@@ -59,11 +61,12 @@ class OMC23Nivel3(models.Model):
     
     class Meta:
         db_table = "Omc23Nivel3"
+        verbose_name = 'Omc23Nivel3'
 
 class OMC23Nivel4(models.Model):
     idOmc23N4 = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idOmc23N4')
     numMat = models.IntegerField(blank= True, null= True)
-    codigo = models.CharField(max_length=11, null = False)
+    codigo = models.CharField(max_length=11, null = False, unique=True)
     descriEng = models.CharField(max_length=100, null = False)
     descriSpa = models.CharField(max_length=110, null= False)
     definicionEng = models.CharField(max_length=350, blank= True, null= True)
@@ -80,11 +83,12 @@ class OMC23Nivel4(models.Model):
 
     class Meta:
         db_table = "Omc23Nivel4"
+        verbose_name = 'Omc23Nivel4'
 
 class OMC23Nivel5(models.Model):
     idOmc23N5 = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idOmc23N5')
     numMat = models.IntegerField(blank= True, null= True)
-    codigo = models.CharField(max_length=13, null=False)
+    codigo = models.CharField(max_length=13, null=False, unique=True)
     descriEng = models.CharField(max_length=120, null=False)
     descriSpa = models.CharField(max_length=120, null=False)
     definicionEng = models.CharField(max_length=250, blank= True, null= True)
@@ -101,11 +105,12 @@ class OMC23Nivel5(models.Model):
 
     class Meta:
         db_table = 'Omc23Nivel5'
+        verbose_name = 'Omc23Nivel5'
 
 class OMC23Nivel6(models.Model):
     idOmc23N6 = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idOmc23N6')
     numMat = models.IntegerField(blank= True, null= True)
-    codigo = models.CharField(max_length=15, null=False)
+    codigo = models.CharField(max_length=15, null=False, unique=True)
     descriEng = models.CharField(max_length=100, null= False)
     descriSpa = models.CharField(max_length=100, null= False)
     definicionEng = models.CharField(max_length=250, blank= True, null= True)
@@ -122,3 +127,4 @@ class OMC23Nivel6(models.Model):
 
     class Meta:
         db_table = "Omc23Nivel6"
+        verbose_name = 'Omc23Nivel6'

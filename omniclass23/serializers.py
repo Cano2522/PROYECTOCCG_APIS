@@ -13,12 +13,12 @@ class OMC23Nivel1Serializer(serializers.ModelSerializer):
         model = OMC23Nivel1
         fields = ['idOmc23N1','codigo','descriEng','descriSpa','definicionEng','definicionSpa','ejemploEng','ejemploSpa','anioReg']
 
-    def validate_codigo(self,value):
-        registro = OMC23Nivel1.objects.filter(codigo=value).first()
-        if registro:
-            raise serializers.ValidationError('Codigo ya existente!')
+    # def validate_codigo(self,value):
+    #     registro = OMC23Nivel1.objects.filter(codigo=value).first()
+    #     if registro:
+    #         raise serializers.ValidationError('Codigo ya existente!')
 
-        return value
+    #     return value
 
 class OMC23Nivel2Serializer(serializers.ModelSerializer):
     class Meta:

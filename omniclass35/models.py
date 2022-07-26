@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class OMC35Nivel1(models.Model):
     idOmc35N1 = models.BigAutoField(auto_created=True, primary_key= True, serialize= False, verbose_name='idOmc35N1')
-    codigo = models.CharField(max_length=9, null=False)
+    codigo = models.CharField(max_length=9, null=False, unique=True)
     descriEng = models.CharField(max_length=30, null= False)
     descriSpa = models.CharField(max_length=100, null= False)
     definicionEng = models.CharField(max_length=150, blank=True, null= True)
@@ -16,10 +16,11 @@ class OMC35Nivel1(models.Model):
 
     class Meta:
         db_table = "Omc35Nivel1"
+        verbose_name = 'Omc35Nivel1'
 
 class OMC35Nivel2(models.Model):
     idOmc35N2 = models.BigAutoField(auto_created=True, primary_key= True, serialize= False, verbose_name='idOmc35N1')
-    codigo = models.CharField(max_length=9, null=False)
+    codigo = models.CharField(max_length=9, null=False, unique=True)
     descriEng = models.CharField(max_length=50, null= False)
     descriSpa = models.CharField(max_length=80, null= False)
     definicionEng = models.CharField(max_length=150, blank=True, null= True)
@@ -32,11 +33,12 @@ class OMC35Nivel2(models.Model):
 
     class Meta:
         db_table = "Omc35Nivel2"
+        verbose_name = 'Omc35Nivel2'
 
 class OMC35Nivel3(models.Model):
     idOmc35N3 = models.BigAutoField(auto_created=True, primary_key= True, serialize= False, verbose_name='idOmc35N3')
     cveHe = models.IntegerField(blank=True,null=True)
-    codigo = models.CharField(max_length=9, null=False)
+    codigo = models.CharField(max_length=9, null=False, unique=True)
     descriEng = models.CharField(max_length=60, null= False)
     descriSpa = models.CharField(max_length=80, null= False)
     definicionEng = models.CharField(max_length=150, blank=True, null= True)
@@ -50,11 +52,12 @@ class OMC35Nivel3(models.Model):
 
     class Meta:
         db_table = "Omc35Nivel3"
+        verbose_name = 'Omc35Nivel3'
 
 class OMC35Nivel4(models.Model):
     idOmc35N4 = models.BigAutoField(auto_created=True, primary_key= True, serialize= False, verbose_name='idOmc35N4')
     cveHe = models.IntegerField(blank=True,null=True)
-    codigo = models.CharField(max_length=11, null=False)
+    codigo = models.CharField(max_length=11, null=False, unique=True)
     descriEng = models.CharField(max_length=80, null= False)
     descriSpa = models.CharField(max_length=90, null= False)
     definicionEng = models.CharField(max_length=150, blank=True, null= True)
@@ -68,11 +71,12 @@ class OMC35Nivel4(models.Model):
 
     class Meta:
         db_table = "Omc35Nivel4"
+        verbose_name = 'Omc35Nivel4'
 
 class OMC35Nivel5(models.Model):
     idOmc35N5 = models.BigAutoField(auto_created=True, primary_key= True, serialize= False, verbose_name='idOmc35N5')
     cveHe = models.IntegerField(blank=True,null=True)
-    codigo = models.CharField(max_length=13, null=False)
+    codigo = models.CharField(max_length=13, null=False, unique=True)
     descriEng = models.CharField(max_length=90, null= False)
     descriSpa = models.CharField(max_length=100, null= False)
     definicionEng = models.CharField(max_length=150, blank=True, null= True)
@@ -86,11 +90,12 @@ class OMC35Nivel5(models.Model):
 
     class Meta:
         db_table = "Omc35Nivel5"
+        verbose_name = 'Omc35Nivel5'
 
 class OMC35Nivel6(models.Model):
     idOmc35N6 = models.BigAutoField(auto_created=True, primary_key= True, serialize= False, verbose_name='idOmc35N6')
     cveHe = models.IntegerField(blank=True,null=True)
-    codigo = models.CharField(max_length=15, null=False)
+    codigo = models.CharField(max_length=15, null=False, unique=True)
     descriEng = models.CharField(max_length=75, null= False)
     descriSpa = models.CharField(max_length=100, null= False)
     definicionEng = models.CharField(max_length=150, blank=True, null= True)
@@ -104,4 +109,5 @@ class OMC35Nivel6(models.Model):
 
     class Meta:
         db_table = "Omc35Nivel6"
+        verbose_name = 'Omc35Nivel6'
     
