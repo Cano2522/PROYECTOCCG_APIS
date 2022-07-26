@@ -7,5 +7,6 @@ router.register('OMC34Nivel2', views.OMC34Nivel2, basename = 'OMC34Nivel2')
 router.register('OMC34Nivel3', views.OMC34Nivel3, basename = 'OMC34Nivel3')
 router.register('OMC34Nivel4', views.OMC34Nivel4, basename = 'OMC34Nivel4')
 router.register('OMC34Nivel5', views.OMC34Nivel5, basename = 'OMC34Nivel5')
+router.register('OMC34Nivel1Relation', views.OMC34Nivel1Relation, basename = 'OMC34Nivel1Relation')
 
 urlpatterns = router.urls
