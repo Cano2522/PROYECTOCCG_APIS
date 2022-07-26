@@ -26,7 +26,7 @@ class OMC34Nivel2(models.Model):
     definicionSpa = models.CharField(max_length=300, null=False)
     anioReg = models.IntegerField(null=False)
     regFinal = models.BooleanField(null=False)
-    fk_Omc34N1 = models.ForeignKey(OMC34Nivel1, on_delete=models.CASCADE, db_column='fk_Omc34N1', verbose_name='Nivel 2')
+    fk_Omc34N1 = models.ForeignKey(OMC34Nivel1, on_delete=models.CASCADE, db_column='fk_Omc34N1', verbose_name='Nivel 1',related_name='children')
 
     def __str__(self):
         return f'{self.codigo}: {self.descriSpa}'
@@ -46,7 +46,7 @@ class OMC34Nivel3(models.Model):
     regUsuario = models.BooleanField(blank=True,null=True)
     fuenteInf = models.CharField(max_length=45,blank=True, null=True)
     anioRegInf = models.DateField(blank=True, null=True)
-    fk_Omc34N2 = models.ForeignKey(OMC34Nivel2, on_delete=models.CASCADE, db_column='fk_Omc34N2', verbose_name='Nivel 2')
+    fk_Omc34N2 = models.ForeignKey(OMC34Nivel2, on_delete=models.CASCADE, db_column='fk_Omc34N2', verbose_name='Nivel 2',related_name='children')
 
     def __str__(self):
         return f'{self.codigo}: {self.descriSpa}'
@@ -66,7 +66,7 @@ class OMC34Nivel4(models.Model):
     regUsuario = models.BooleanField(blank=True,null=True)
     fuenteInf = models.CharField(max_length=45,blank=True, null=True)
     anioRegInf = models.DateField(blank=True, null=True)
-    fk_Omc34N3 = models.ForeignKey(OMC34Nivel3, on_delete=models.CASCADE, db_column='fk_Omc34N3', verbose_name='Nivel 3')
+    fk_Omc34N3 = models.ForeignKey(OMC34Nivel3, on_delete=models.CASCADE, db_column='fk_Omc34N3', verbose_name='Nivel 3',related_name='children')
 
     def __str__(self):
         return f'{self.codigo}: {self.descriSpa}'
@@ -86,7 +86,7 @@ class OMC34Nivel5(models.Model):
     regUsuario = models.BooleanField(null=False)
     fuenteInf = models.CharField(max_length=45,blank=True, null=True)
     anioRegInf = models.DateField(blank=True, null=True)
-    fk_Omc34N4 = models.ForeignKey(OMC34Nivel4, on_delete=models.CASCADE, db_column='fk_Omc34N4', verbose_name='Nivel 4')
+    fk_Omc34N4 = models.ForeignKey(OMC34Nivel4, on_delete=models.CASCADE, db_column='fk_Omc34N4', verbose_name='Nivel 4',related_name='children')
 
     def __str__(self):
         return f'{self.Codigo}: {self.descriSpa}'
