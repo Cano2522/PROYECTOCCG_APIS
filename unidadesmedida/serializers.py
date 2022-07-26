@@ -18,5 +18,5 @@ class SubTipUniSerializer(serializers.ModelSerializer):
 class UnidadesMedidaSerializer(serializers.ModelSerializer):
     class Meta:
         model = UnidadesMedida
-        fields = ['idUniMed','cveSat','unidad','sistema','fk_Stu']
+        fields = ['idUniMed','cveSat','unidad','descripcion','sistema','fk_Stu']
 

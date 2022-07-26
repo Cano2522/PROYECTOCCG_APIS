@@ -41,7 +41,7 @@ class RolesOrg(Authentication,viewsets.ModelViewSet):
 class ListarRolesXOMC23N2(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
         with connection.cursor() as cursor:
-            registros = cursor.execute("SELECT Omc34Nivel2 .Codigo,Omc34Nivel2.descriEng AS descriEngOMC,Omc34Nivel2.descriSpa AS descriSpaOMC,Omc34Nivel2.anioReg,Omc34Nivel2.regFinal,RolesOrg.Codigo AS codigoOmc,RolesOrg.Consecutivo,RolesOrg.descriEng AS descriEngRol,RolesOrg.descriSpa AS descriSpaRol,RolesOrg.definicionEng,RolesOrg.definicionSpa,RolesOrg.fuenteInf,RolesOrg.fecRegInf FROM Omc34Nivel2 JOIN RolesOrg ON Omc34Nivel2.Codigo=RolesOrg.Codigo")
+            registros = cursor.execute("SELECT Omc34Nivel2 .codigo,Omc34Nivel2.descriEng AS descriEngOMC,Omc34Nivel2.descriSpa AS descriSpaOMC,Omc34Nivel2.anioReg,Omc34Nivel2.regFinal,RolesOrg.codigo AS codigoOmc,RolesOrg.consecutivo,RolesOrg.descriEng AS descriEngRol,RolesOrg.descriSpa AS descriSpaRol,RolesOrg.definicionEng,RolesOrg.definicionSpa,RolesOrg.fuenteInf,RolesOrg.fecRegInf FROM Omc34Nivel2 JOIN RolesOrg ON Omc34Nivel2.codigo=RolesOrg.codigo")
             registros = dictfetchall(cursor)
             return registros
         
@@ -55,7 +55,7 @@ class ListarRolesXOMC23N2(Authentication,viewsets.GenericViewSet):
 class ListarRolesXOMC23N3(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
         with connection.cursor() as cursor:
-            registros = cursor.execute("SELECT Omc34Nivel3.Codigo,Omc34Nivel3.descriEng AS descriEngOMC,Omc34Nivel3.descriSpa AS descriSpaOMC,Omc34Nivel3.anioReg,Omc34Nivel3.regFinal,RolesOrg.Codigo AS codigoOmc,RolesOrg.Consecutivo,RolesOrg.descriEng AS descriEngRol,RolesOrg.descriSpa AS descriSpaRol,RolesOrg.definicionEng,RolesOrg.definicionSpa,RolesOrg.fuenteInf,RolesOrg.fecRegInf FROM Omc34Nivel3 JOIN RolesOrg ON Omc34Nivel3.Codigo=RolesOrg.Codigo")
+            registros = cursor.execute("SELECT Omc34Nivel3.codigo,Omc34Nivel3.descriEng AS descriEngOMC,Omc34Nivel3.descriSpa AS descriSpaOMC,Omc34Nivel3.anioReg,Omc34Nivel3.regFinal,RolesOrg.codigo AS codigoOmc,RolesOrg.consecutivo,RolesOrg.descriEng AS descriEngRol,RolesOrg.descriSpa AS descriSpaRol,RolesOrg.definicionEng,RolesOrg.definicionSpa,RolesOrg.fuenteInf,RolesOrg.fecRegInf FROM Omc34Nivel3 JOIN RolesOrg ON Omc34Nivel3.codigo=RolesOrg.codigo")
             registros = dictfetchall(cursor)
             return registros
         
@@ -69,7 +69,7 @@ class ListarRolesXOMC23N3(Authentication,viewsets.GenericViewSet):
 class ListarRolesXOMC23N4(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
         with connection.cursor() as cursor:
-            registros = cursor.execute("SELECT Omc34Nivel4.Codigo,Omc34Nivel4.descriEng AS descriEngOMC,Omc34Nivel4 .descriSpa AS descriSpaOMC,Omc34Nivel4.anioReg,Omc34Nivel4.regFinal,RolesOrg.Codigo AS codigoOmc,RolesOrg.Consecutivo,RolesOrg.descriEng AS descriEngRol,RolesOrg.descriSpa AS descriSpaRol,RolesOrg.definicionEng,RolesOrg.definicionSpa,RolesOrg.fuenteInf,RolesOrg.fecRegInf FROM Omc34Nivel4 JOIN RolesOrg ON Omc34Nivel4.Codigo=RolesOrg.Codigo")
+            registros = cursor.execute("SELECT Omc34Nivel4.codigo,Omc34Nivel4.descriEng AS descriEngOMC,Omc34Nivel4 .descriSpa AS descriSpaOMC,Omc34Nivel4.anioReg,Omc34Nivel4.regFinal,RolesOrg.codigo AS codigoOmc,RolesOrg.consecutivo,RolesOrg.descriEng AS descriEngRol,RolesOrg.descriSpa AS descriSpaRol,RolesOrg.definicionEng,RolesOrg.definicionSpa,RolesOrg.fuenteInf,RolesOrg.fecRegInf FROM Omc34Nivel4 JOIN RolesOrg ON Omc34Nivel4.codigo=RolesOrg.codigo")
             registros = dictfetchall(cursor)
             return registros
         
