@@ -40,7 +40,7 @@ class OMC34Nivel4RelationSerializer(serializers.ModelSerializer):
         fields = ['idOmc34N4','codigo','descriEng','descriSpa','definicionEng','definicionSpa','anioReg','regFinal','regUsuario','fuenteInf','anioRegInf','fk_Omc34N3','children']
                  
 class OMC34Nivel3RelationSerializer(serializers.ModelSerializer):
-    children = OMC34Nivel4Serializer(many=True)
+    children = OMC34Nivel4RelationSerializer(many=True)
     class Meta:
         model = OMC34Nivel3
         fields = ['idOmc34N3','codigo','descriEng','descriSpa','definicionEng','definicionSpa','anioReg','regFinal','regUsuario','fuenteInf','anioRegInf','fk_Omc34N2','children']
