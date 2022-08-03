@@ -30,7 +30,7 @@ class OMC34Nivel4Serializer(serializers.ModelSerializer):
 class OMC34Nivel5Serializer(serializers.ModelSerializer):
     class Meta:
         model = OMC34Nivel5
-        fields = ['idOmc34N5','codigo','descriEng','descriSpa','definicionEng','definicionSpa','anioReg','regFinal','regUsuario','fuenteInf','anioRegInf','fk_Omc34N4']
+        fields = ['idOmc34N5','Codigo','descriEng','descriSpa','definicionEng','definicionSpa','anioReg','regFinal','regUsuario','fuenteInf','anioRegInf','fk_Omc34N4']
 
 # SERIALIZERS PARA EL ARBOL
 class OMC34Nivel4RelationSerializer(serializers.ModelSerializer):

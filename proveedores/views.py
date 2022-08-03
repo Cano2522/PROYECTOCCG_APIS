@@ -2,6 +2,7 @@ from django.db import connection
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from proveedores.utils import validate_files
 from usuarios.authentication_mixins import Authentication
 from proveedores.serializers import (
     ProveedorSerializer,
@@ -26,6 +27,7 @@ class VistaProveedor(Authentication,viewsets.ModelViewSet):
             return self.get_serializer().Meta.model.objects.filter(idProveedor=pk).first()
     
     def create(self, request):
+        data = validate_files(request.data,'logoImg',True)
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
@@ -33,6 +35,7 @@ class VistaProveedor(Authentication,viewsets.ModelViewSet):
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
+        data = validate_files(request.data,'logoImg',True)
         if self.get_queryset(pk):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
