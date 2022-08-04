@@ -28,7 +28,7 @@ class VistaProveedor(Authentication,viewsets.ModelViewSet):
     
     def create(self, request):
         data = validate_files(request.data,'logoImg',True)
-        serializer = self.serializer_class(data = request.data)
+        serializer = self.serializer_class(data = data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
@@ -37,7 +37,7 @@ class VistaProveedor(Authentication,viewsets.ModelViewSet):
     def update(self, request, pk=None):
         data = validate_files(request.data,'logoImg',True)
         if self.get_queryset(pk):
-            serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
+            serializer = self.serializer_class(self.get_queryset(pk), data = data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status = status.HTTP_200_OK)
