@@ -228,7 +228,7 @@ class ListarSectorXProveedor(Authentication,viewsets.GenericViewSet):
 class ListarMarcaXProveedor(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
         with connection.cursor() as cursor:
-            listarMarca = cursor.execute("SELECT Proveedor.nombre AS nombreProv,Proveedor.RFC,Proveedor.email,Proveedor.observaciones,Proveedor.urlSitioWeb,Proveedor.fabricante,Proveedor.activo,Marca.nombre AS nombreMarca,Marca.activo FROM Proveedor JOIN ProveedorMarca ON fk_Proveedor=idProveedor JOIN Marca ON fk_Marca=idMarca")
+            listarMarca = cursor.execute("SELECT Proveedor.nombre AS nombreProv,Proveedor.RFC,Proveedor.email,Proveedor.observaciones,Proveedor.urlSitioWeb,Proveedor.fabricante,Proveedor.activo as activoProv,Marca.nombre AS nombreMarca,Marca.activo activoMar FROM Proveedor JOIN ProveedorMarca ON fk_Proveedor=idProveedor JOIN Marca ON fk_Marca=idMarca")
             listarMarca = dictfetchall(cursor)
             return listarMarca
         
