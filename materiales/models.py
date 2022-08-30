@@ -247,3 +247,17 @@ class CaracEspe(models.Model):
 
     class Meta:
         db_table = "CaracEspe"
+
+#CEMENTO
+
+class ClaseResist(models.Model):
+    idClasRes = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idClasRes')
+    clase = models.CharField(max_length=10, null=False)
+
+    def __str__(self):
+        return f'{self.clase}'
+    
+    class Meta:
+        db_table = "ClaseResist"
+
+

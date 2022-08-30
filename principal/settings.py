@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'materiales',
     'usuarios',
     'normativa',
-    'cementos',
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',

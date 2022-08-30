@@ -19,5 +19,8 @@ router.register('ListarFlujoRev', views.VistaFlujoRev, basename = 'ListarFlujoRe
 router.register('ListarIonCloruro', views.VistaIonCloruro, basename = 'ListarIonCloruro')
 router.register('ListarFibraConcre', views.VistaFibraConcre, basename = 'ListarFibraConcre')
 router.register('ListarConcretosMateriales', views.ListarConcretosMateriales, basename = 'ListarConcretosMateriales')
+# FUNCIONES CORRESPONDIENTES A CEMENTOS
+router.register('ListarAcerosRefuerzo', views.ListarAcerosRefuerzo, basename = 'ListarAcerosRefuerzo')
+router.register('ListarCementos', views.ListarCementos, basename = 'ListarCementos')
 
 urlpatterns = router.urls
