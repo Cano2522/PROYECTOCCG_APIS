@@ -50,6 +50,7 @@ urlpatterns = [
     path('apimateriales/', include('materiales.urls')),
     path('apiusuarios/', include('usuarios.urls')),
     path('apinormativa/', include('normativa.urls')),
+    path('apicementos/', include('cementos.urls')),
     path('login/', Login.as_view(), name = 'Login'),
     path('logout/', Logout.as_view(), name = 'Logout'),
     path('refreshtoken/',UserToken.as_view(), name = 'refresh_token'),

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'materiales',
     'usuarios',
     'normativa',
+    'cementos',
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
@@ -114,9 +115,9 @@ WSGI_APPLICATION = 'principal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME':'ccdatabase',
+        'NAME':'ccdatabase_chida',
         'USER': 'eduardo',
-        'PASSWORD': 'admin1',
+        'PASSWORD': 'admin1234',
         'HOST': 'CC-MX-BIM-005',  
         'PORT': '',
 
