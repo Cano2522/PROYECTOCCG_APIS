@@ -7,6 +7,7 @@ from proveedores.models import (
     ProveedorMarca,
     SucursalProv,
     SectorProv,
+    MaterialProveedor,
 )
 
 class ProveedorSerializer(serializers.ModelSerializer):
@@ -38,3 +39,8 @@ class SectorProvSerializer(serializers.ModelSerializer):
     class Meta:
         model = SectorProv
         fields = ['idSecProv','fk_Proveedor','fk_SecMer']
+
+class MaterialProveedorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MaterialProveedor
+        fields = ['idMatProv','precio','fechaAct','fuenteInfo','fk_Material','fk_SucProv','fk_ProvMar']

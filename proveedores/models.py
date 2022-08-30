@@ -1,5 +1,6 @@
 from django.db import models
 from datosgeograficos.models import CP
+from materiales.models import Materiales
 
 # Create your models here.
 
@@ -78,3 +79,18 @@ class SectorProv(models.Model):
 
     class Meta:
         db_table = 'SectorProv'
+
+class MaterialProveedor(models.Model):
+    idMatProv = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idMatProv')
+    precio = models.FloatField(null=False)
+    fechaAct = models.DateTimeField(null=False)
+    fuenteInfo = models.CharField(max_length=100, blank=True, null=True)
+    fk_Material = models.ForeignKey(Materiales, on_delete=models.CASCADE, db_column='fk_Material', verbose_name='Material')
+    fk_SucProv = models.ForeignKey(SucursalProv, on_delete=models.CASCADE, db_column='fk_SucProv', verbose_name='Sucursal')
+    fk_ProvMar = models.ForeignKey(ProveedorMarca, on_delete=models.SET_NULL, blank=True, null=True, db_column='fk_ProvMar')
+
+    def __str__(self):
+        return f'{self.idMatProv}'
+
+    class Meta:
+        db_table = 'MaterialProveedor'

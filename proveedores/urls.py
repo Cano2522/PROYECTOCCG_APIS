@@ -8,6 +8,7 @@ router.register('SectorMercado', views.VistaSectorMercado, basename = 'SectorMer
 router.register('ProveedorMarca', views.VistaProveedorMarca, basename = 'ProveedorMarca')
 router.register('SucursalProveedor', views.VistaSucursalProv, basename = 'SucursalProveedor')
 router.register('SectorProveedor', views.VistaSectorProv, basename = 'SectorProveedor')
+router.register('MaterialProveedor', views.VistaMaterialProveedor, basename = 'MaterialProveedor')
 router.register('ListarSectorXProveedor', views.ListarSectorXProveedor, basename = 'ListarSectorXProveedor')
 router.register('ListarMarcaXProveedor', views.ListarMarcaXProveedor, basename = 'ListarMarcaXProveedor')
 router.register('ListarSucursalXProveedor', views.ListarSucursalXProveedor, basename = 'ListarSucursalXProveedor')

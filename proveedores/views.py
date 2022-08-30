@@ -10,7 +10,8 @@ from proveedores.serializers import (
     SectorMercadoSerializer,
     ProveedorMarcaSerializer,
     SucursalProvSerializer,
-    SectorProvSerializer
+    SectorProvSerializer,
+    MaterialProveedorSerializer
 )
 
 # Create your views here.
@@ -206,6 +207,38 @@ class VistaSectorProv(Authentication,viewsets.ModelViewSet):
     
     def destroy(self, request, pk=None):
         registro = self.get_queryset().filter(idSectorProv=pk).first()
+        if registro:
+            registro.delete()
+            return Response({'mensaje':'Registro eliminado correctamente.'}, status = status.HTTP_200_OK)
+        return Response({'error':'No existe un registro con estos datos.'},status = status.HTTP_404_NOT_FOUND)
+
+class VistaMaterialProveedor(Authentication,viewsets.ModelViewSet):
+    serializer_class = MaterialProveedorSerializer
+
+    def get_queryset(self, pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all()
+        else:
+            return self.get_serializer().Meta.model.objects.filter(idMatProv=pk).first()
+    
+    def create(self, request):
+        serializer = self.serializer_class(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+    
+    def update(self, request, pk=None):
+        if self.get_queryset(pk):
+            serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status = status.HTTP_200_OK)
+            return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+        return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
+    
+    def destroy(self, request, pk=None):
+        registro = self.get_queryset().filter(idMatProv=pk).first()
         if registro:
             registro.delete()
             return Response({'mensaje':'Registro eliminado correctamente.'}, status = status.HTTP_200_OK)

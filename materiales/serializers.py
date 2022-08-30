@@ -15,6 +15,12 @@ from materiales.models import (
     FlujoRev,
     IonCloruro,
     FibraConcre,
+    ClaseResist,
+    ClasifCemento,
+    Cemento,
+    Grado,
+    Dimensiones,
+    AceroRefuerzo
 )
         
 #SERIALIZERS CORRESPONDIENTES A ENTIDADES RELACIONADAS A MATERIALES
@@ -93,3 +99,36 @@ class FibraConcreSerializer(serializers.ModelSerializer):
     class Meta:
         model = FibraConcre
         fields = ['idFibraCon','tipo','tipoMaterial','fibras']
+
+#CEMENTO
+class ClaseResistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClaseResist
+        fields = ['idClasRes','clase']
+
+class ClasifCementoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClasifCemento
+        fields = ['idClasCem','tipo']
+    
+class CementoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cemento
+        fields = ['idCemento','numMat','codigo','fk_Material','fk_ClasCem','fk_ClasRe']
+
+#ACEROREFORZADO
+class GradoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Grado
+        fields = ['idGrado','valorGrad']
+
+class DimensionesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Dimensiones
+        fields = ['idDimensiones','noVarilla','diametro','area','perimetro','masa']
+
+class AceroRefuerzoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AceroRefuerzo
+        fields = ['idAceroRef','numMat','codigo','fk_Material','fk_Grado','fk_Dimensiones','fk_Esfuerzo']
+

@@ -1,3 +1,4 @@
+from posixpath import basename
 from rest_framework.routers import DefaultRouter
 from materiales import views
 
@@ -20,7 +21,14 @@ router.register('ListarIonCloruro', views.VistaIonCloruro, basename = 'ListarIon
 router.register('ListarFibraConcre', views.VistaFibraConcre, basename = 'ListarFibraConcre')
 router.register('ListarConcretosMateriales', views.ListarConcretosMateriales, basename = 'ListarConcretosMateriales')
 # FUNCIONES CORRESPONDIENTES A CEMENTOS
-router.register('ListarAcerosRefuerzo', views.ListarAcerosRefuerzo, basename = 'ListarAcerosRefuerzo')
+router.register('Cemento', views.VistaCemento, basename = 'Cemento')
+router.register('ListarClaseResist', views.VistaClaseResist, basename = 'ListarClaseResist')
+router.register('ListarClasifCemento', views.VistaClasifCemento, basename = 'ListarClasifCemento')
 router.register('ListarCementos', views.ListarCementos, basename = 'ListarCementos')
+# FUNCIONES CORRESPONDIENTES A ACERO REFORZADO
+router.register('AceroRefuerzo', views.VistaAceroRefuerzo, basename = 'AceroRefuerzo')
+router.register('Dimensiones', views.VistaDimensiones, basename = 'Dimensiones')
+router.register('ListarGrado', views.VistaGrado, basename = 'ListarGrado')
+router.register('ListarAcerosRefuerzo', views.ListarAcerosRefuerzo, basename = 'ListarAcerosRefuerzo')
 
 urlpatterns = router.urls

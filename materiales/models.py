@@ -1,3 +1,5 @@
+from pyexpat import model
+from turtle import ondrag
 from django.db import models
 from unidadesmedida.models import UnidadesMedida
 
@@ -260,4 +262,66 @@ class ClaseResist(models.Model):
     class Meta:
         db_table = "ClaseResist"
 
+class ClasifCemento(models.Model):
+    idClasCem = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idClasCem')
+    tipo = models.CharField(max_length=80, null=False)
 
+    def __str__(self):
+        return f'{self.tipo}'
+
+    class Meta:
+        db_table = 'ClasifCemento'
+
+class Cemento(models.Model):
+    idCemento = models.BigAutoField(auto_created=True,primary_key=True, serialize=False, verbose_name='idCemento')
+    numMat = models.IntegerField(null=False)
+    codigo = models.CharField(max_length=13, null=False)
+    fk_Material = models.ForeignKey(Materiales, on_delete=models.CASCADE,db_column='fk_material',verbose_name='Material')
+    fk_ClasCem = models.ForeignKey(ClasifCemento, on_delete=models.CASCADE, db_column='fk_ClasCem', verbose_name='Clasificación')
+    fk_ClasRe = models.ForeignKey(ClaseResist, on_delete=models.CASCADE,db_column='fk_ClasRe', verbose_name='Clase')
+
+    def __str__(self):
+        return f'{self.codigo}'
+    
+    class Meta:
+        db_table = 'Cemento'
+
+#ACERO REFORZADO
+class Grado(models.Model):
+    idGrado = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idGrado')
+    valorGrad = models.IntegerField(null=False)
+
+    def __str__(self):
+        return f'{self.valorGrad}'
+
+    class Meta:
+        db_table = 'Grado'
+
+class Dimensiones(models.Model):
+    idDimensiones = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idDimensiones')
+    noVarilla = models.CharField(max_length=8,null=False)
+    diametro = models.FloatField(null=False)
+    area = models.FloatField(blank=True, null=True)
+    perimetro = models.FloatField(blank=True, null=True)
+    masa = models.FloatField(blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.idDimenciones}'
+
+    class Meta:
+        db_table = 'Dimensiones'
+
+class AceroRefuerzo(models.Model):
+    idAceroRef = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='idAceroRef')
+    numMat = models.IntegerField(null=False)
+    codigo = models.CharField(max_length=13, null=False)
+    fk_Material = models.ForeignKey(Materiales, on_delete=models.CASCADE, db_column='fk_Material', verbose_name='Material')
+    fk_Grado = models.ForeignKey(Grado, on_delete=models.CASCADE, db_column='fk_Grado', verbose_name='Grado')
+    fk_Dimensiones = models.ForeignKey(Dimensiones, on_delete=models.CASCADE, db_column='fk_Dimensiones', verbose_name='Dimensiones')
+    fk_Esfuerzo = models.ForeignKey(Esfuerzo, on_delete=models.CASCADE, db_column='fk_Esfuerzo', verbose_name='Esfuerzo')
+
+    def __str__(self):
+        return f'{self.codigo}'
+
+    class Meta:
+        db_table = 'AceroRefuerzo'

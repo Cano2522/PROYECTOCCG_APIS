@@ -19,6 +19,12 @@ from materiales.serializers import (
     FlujoRevSerializer,
     IonCloruroSerializer,
     FibraConcreSerializer,
+    ClaseResistSerializer,
+    ClasifCementoSerializer,
+    CementoSerializer,
+    GradoSerializer,
+    DimensionesSerializer,
+    AceroRefuerzoSerializer
 )
 # Create your views here.
 
@@ -242,19 +248,55 @@ class ListarConcretosMateriales(Authentication,viewsets.GenericViewSet):
             return Response({'mensaje':'No existe un registro'}, status = status.HTTP_404_NOT_FOUND)
 
 # FUNCIONES CORRESPONDIENTES A CEMENTOS
-class ListarAcerosRefuerzo(Authentication,viewsets.GenericViewSet):
-    def get_queryset(self):
-        with connection.cursor() as cursor:
-            registros = cursor.execute("SELECT Materiales.codigoOmc AS CodigoOmc23,Materiales.Consecutivo,Materiales.descriCorta,Materiales.descriLarga,Materiales.Comentarios,Materiales.palabrasCve,Materiales.desCorEng,Materiales.desLargEng,Materiales.fuenteInf,Materiales.fecRegInf,Materiales.codigoBimsa,Omc23Nivel5.descriSpa AS Omniclass,Grado.valorGrad,Dimensiones.noVarilla,Dimensiones.diametro,Dimensiones.area,Dimensiones.perimetro,Dimensiones.masa,Esfuerzo.tipoEsfuerzo FROM Omc23Nivel5 JOIN  Materiales ON codigoOmc=Omc23Nivel5.Codigo JOIN AceroRefuerzo ON fk_Material=idMaterial JOIN Grado ON idGrado=fk_Grado JOIN Dimensiones ON fk_Dimensiones=idDimensiones JOIN Esfuerzo ON Esfuerzo.idEsfuerzo=AceroRefuerzo.fk_Esfuerzo")
-            registros = dictfetchall(cursor)
-            return registros
-        
-    def list(self, request):
-        data = self.get_queryset()
-        if data:
-            return Response(data, status = status.HTTP_200_OK)
+class VistaCemento(Authentication,viewsets.ModelViewSet):
+    serializer_class = CementoSerializer
+
+    def get_queryset(self, pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all()
         else:
-            return Response({'mensaje':'No existen registros'}, status = status.HTTP_404_NOT_FOUND)
+            return self.get_serializer().Meta.model.objects.filter(idCemento = pk).first()
+
+    def create(self, request):
+        serializer = self.serializer_class(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status = status.HTTP_201_CREATED)
+        return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+    
+    def update(self, request, pk=None):
+        if self.get_queryset(pk):
+            serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+    
+    def destroy(self, request, pk=None):
+        registro = self.get_queryset().filter(idCemento=pk).first()
+        if registro:
+            registro.delete()
+            return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+
+class VistaClaseResist(Authentication,viewsets.ModelViewSet):
+    serializer_class = ClaseResistSerializer
+
+    def get_queryset(self,pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all()
+        else:
+            return self.get_serializer().Meta.model.objects.filter(idClasRes = pk).first()
+
+class VistaClasifCemento(Authentication,viewsets.ModelViewSet):
+    serializer_class = ClasifCementoSerializer
+
+    def get_queryset(self,pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all()
+        else:
+            return self.get_serializer().Meta.model.objects.filter(idClasRes = pk).first()
 
 class ListarCementos(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
@@ -270,7 +312,93 @@ class ListarCementos(Authentication,viewsets.GenericViewSet):
         else:
             return Response({'mensaje':'No existen registros'}, status = status.HTTP_404_NOT_FOUND)
 
+# FUNCIONES CORRESPONDIENTES A ACERO REFORZADO
+class VistaAceroRefuerzo(Authentication,viewsets.ModelViewSet):
+    serializer_class = AceroRefuerzoSerializer
 
+    def get_queryset(self, pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all()
+        else:
+            return self.get_serializer().Meta.model.objects.filter(idAceroRef = pk).first()
+
+    def create(self, request):
+        serializer = self.serializer_class(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status = status.HTTP_201_CREATED)
+        return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+    
+    def update(self, request, pk=None):
+        if self.get_queryset(pk):
+            serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+    
+    def destroy(self, request, pk=None):
+        registro = self.get_queryset().filter(idAceroRef=pk).first()
+        if registro:
+            registro.delete()
+            return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+
+class VistaDimensiones(Authentication,viewsets.ModelViewSet):
+    serializer_class = DimensionesSerializer
+
+    def get_queryset(self, pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all()
+        else:
+            return self.get_serializer().Meta.model.objects.filter(idDimensiones = pk).first()
+
+    def create(self, request):
+        serializer = self.serializer_class(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status = status.HTTP_201_CREATED)
+        return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+    
+    def update(self, request, pk=None):
+        if self.get_queryset(pk):
+            serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
+    
+    def destroy(self, request, pk=None):
+        registro = self.get_queryset().filter(idDimensiones=pk).first()
+        if registro:
+            registro.delete()
+            return Response({'mensaje':'Registro eliminado correctamente!'}, status = status.HTTP_200_OK)
+        return Response({'error':'No existe un registro con estos datos!'}, status = status.HTTP_404_NOT_FOUND)
+
+class VistaGrado(Authentication,viewsets.ModelViewSet):
+    serializer_class = GradoSerializer
+
+    def get_queryset(self, pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all()
+        else:
+            return self.get_serializer().Meta.model.objects.filter(idGrado = pk).first()
+
+class ListarAcerosRefuerzo(Authentication,viewsets.GenericViewSet):
+    def get_queryset(self):
+        with connection.cursor() as cursor:
+            registros = cursor.execute("SELECT Materiales.codigoOmc AS CodigoOmc23,Materiales.Consecutivo,Materiales.descriCorta,Materiales.descriLarga,Materiales.Comentarios,Materiales.palabrasCve,Materiales.desCorEng,Materiales.desLargEng,Materiales.fuenteInf,Materiales.fecRegInf,Materiales.codigoBimsa,Omc23Nivel5.descriSpa AS Omniclass,Grado.valorGrad,Dimensiones.noVarilla,Dimensiones.diametro,Dimensiones.area,Dimensiones.perimetro,Dimensiones.masa,Esfuerzo.tipoEsfuerzo FROM Omc23Nivel5 JOIN  Materiales ON codigoOmc=Omc23Nivel5.Codigo JOIN AceroRefuerzo ON fk_Material=idMaterial JOIN Grado ON idGrado=fk_Grado JOIN Dimensiones ON fk_Dimensiones=idDimensiones JOIN Esfuerzo ON Esfuerzo.idEsfuerzo=AceroRefuerzo.fk_Esfuerzo")
+            registros = dictfetchall(cursor)
+            return registros
+        
+    def list(self, request):
+        data = self.get_queryset()
+        if data:
+            return Response(data, status = status.HTTP_200_OK)
+        else:
+            return Response({'mensaje':'No existen registros'}, status = status.HTTP_404_NOT_FOUND)
 
 def dictfetchall(cursor): 
     columns = [col[0] for col in cursor.description]
