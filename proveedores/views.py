@@ -275,7 +275,7 @@ class ListarMarcaXProveedor(Authentication,viewsets.GenericViewSet):
 class ListarSucursalXProveedor(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
         with connection.cursor() as cursor:
-            listarSucursal = cursor.execute("SELECT Proveedor.nombre,Proveedor.RFC,Proveedor.email,Proveedor.observaciones,Proveedor.urlSitioWeb,Proveedor.fabricante,Proveedor.activo,SucursalProv.alias,SucursalProv.numTel,SucursalProv.contactoAten,SucursalProv.nomSuperior, SucursalProv.cargoSuperior,SucursalProv.calle,SucursalProv.noInt,SucursalProv.noExt,SucursalProv.colonia,CP.cp AS CP,MunDeleg.nombre AS municipio,Estado.nombre AS estado,Pais.nombre AS pais FROM Proveedor JOIN SucursalProv ON fk_Proveedor=idProveedor JOIN CP ON fk_CP=cp JOIN MunDeleg ON fk_MunDeleg=idMunDeleg JOIN Estado ON fk_Estado=idEstado JOIN Pais ON fk_Pais=idPais")
+            listarSucursal = cursor.execute("SELECT Proveedor.nombre,Proveedor.RFC,Proveedor.email,Proveedor.observaciones,Proveedor.urlSitioWeb,Proveedor.fabricante,Proveedor.activo,SucursalProv.alias,SucursalProv.numTel,SucursalProv.contactoAten,SucursalProv.nomSuperior, SucursalProv.cargoSuperior,SucursalProv.calle,SucursalProv.noInt,SucursalProv.idSucProv,SucursalProv.noExt,SucursalProv.colonia,CP.cp AS CP,MunDeleg.nombre AS municipio,Estado.nombre AS estado,Pais.nombre AS pais FROM Proveedor JOIN SucursalProv ON fk_Proveedor=idProveedor JOIN CP ON fk_CP=cp JOIN MunDeleg ON fk_MunDeleg=idMunDeleg JOIN Estado ON fk_Estado=idEstado JOIN Pais ON fk_Pais=idPais")
             listarSucursal = dictfetchall(cursor)
             return listarSucursal
         

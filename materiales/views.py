@@ -236,7 +236,7 @@ class VistaFibraConcre(Authentication,viewsets.ModelViewSet):
 class ListarConcretosMateriales(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
          with connection.cursor() as cursor:
-            listarConcreto = cursor.execute("SELECT Mat.codigoOmc, Mat.consecutivo,Mat.descriCorta,Mat.descriLarga,Mat.comentarios,Mat.palabrasCve,Mat.desCorEng,Mat.desLargEng,Mat.fuenteInf,Mat.fecRegInf,Mat.codigoBimsa,Omc23Nivel3.descriSpa AS nombre,acroEsf.sigla as siglaEsf,ValorEsfuerzo.valor AS valorEsfuerzo,uniVal.unidad AS unidadEsf,Esfuerzo.tipoEsfuerzo,TipoResistencia.tipo AS tipoResistencia,acroTma.sigla AS siglaTma,TMA.valTma,acroRev.sigla as siglaRev,Tma.tmaFrac,Revenimiento.valRev,uniRev.unidad AS unidadRev,TipoConsistencia.Tipo AS tipoCons,CaracEspe.modElast,CaracEspe.acronimo1,CaracEspe.edad,CaracEspe.absorcionCap,CaracEspe.acronimo2,CaracEspe.trabaExtend,CaracEspe.clase,CaracEspe.color,CaracEspe.comportamiento,CaracEspe.conAire,CaracEspe.conIonClor,CaracEspe.tiempoPrueba,SistColocacion.tipoSistema FROM Omc23Nivel3 FULL JOIN  Materiales mat ON mat.codigoOmc=Omc23Nivel3.Codigo FULL JOIN  Concreto ON fk_Material=idMaterial FULL JOIN Revenimiento ON fk_Reven=idReven FULL JOIN Acronimo acroRev ON Revenimiento.fk_Acronimo=acroRev.idAcronimo FULL  JOIN UnidadesMedida uniRev ON Revenimiento.fk_UniMed=uniRev.idUniMed FULL JOIN ValorEsfuerzo ON fk_ValEsf=idValEsf JOIN Esfuerzo ON Esfuerzo.idEsfuerzo=ValorEsfuerzo.fk_Esfuerzo JOIN UnidadesMedida uniVal ON uniVal.idUniMed=ValorEsfuerzo.fk_UniMed FULL JOIN Acronimo acroEsf ON Esfuerzo.fk_Acronimo=acroEsf.idAcronimo FULL JOIN TMA ON fk_Tma=idTma FULL JOIN Acronimo acroTma ON Tma.fk_Acronimo=acroTma.idAcronimo FULL JOIN SistColocacion ON fk_SistColoc=idSistColoc FULL JOIN TipoConsistencia ON Revenimiento.fk_TipoCons=TipoConsistencia.idTipoCons FULL JOIN TipoResistencia ON TipoResistencia.idTipoResist=ValorEsfuerzo.fk_TipoResist FULL JOIN CaracEspe ON fk_Concreto=idConcreto WHERE codigoOmc IS NOT NULL")
+            listarConcreto = cursor.execute("SELECT Mat.idMaterial,Mat.codigoOmc, Mat.consecutivo,Mat.descriCorta,Mat.descriLarga,Mat.comentarios,Mat.palabrasCve,Mat.desCorEng,Mat.desLargEng,Mat.fuenteInf,Mat.fecRegInf,Mat.codigoBimsa,Omc23Nivel3.descriSpa AS nombre,acroEsf.sigla as siglaEsf,ValorEsfuerzo.valor AS valorEsfuerzo,uniVal.unidad AS unidadEsf,Esfuerzo.tipoEsfuerzo,TipoResistencia.tipo AS tipoResistencia,acroTma.sigla AS siglaTma,TMA.valTma,acroRev.sigla as siglaRev,Tma.tmaFrac,Revenimiento.valRev,uniRev.unidad AS unidadRev,TipoConsistencia.Tipo AS tipoCons,CaracEspe.modElast,CaracEspe.acronimo1,CaracEspe.edad,CaracEspe.absorcionCap,CaracEspe.acronimo2,CaracEspe.trabaExtend,CaracEspe.clase,CaracEspe.color,CaracEspe.comportamiento,CaracEspe.conAire,CaracEspe.conIonClor,CaracEspe.tiempoPrueba,SistColocacion.tipoSistema FROM Omc23Nivel3 FULL JOIN  Materiales mat ON mat.codigoOmc=Omc23Nivel3.Codigo FULL JOIN  Concreto ON fk_Material=idMaterial FULL JOIN Revenimiento ON fk_Reven=idReven FULL JOIN Acronimo acroRev ON Revenimiento.fk_Acronimo=acroRev.idAcronimo FULL  JOIN UnidadesMedida uniRev ON Revenimiento.fk_UniMed=uniRev.idUniMed FULL JOIN ValorEsfuerzo ON fk_ValEsf=idValEsf JOIN Esfuerzo ON Esfuerzo.idEsfuerzo=ValorEsfuerzo.fk_Esfuerzo JOIN UnidadesMedida uniVal ON uniVal.idUniMed=ValorEsfuerzo.fk_UniMed FULL JOIN Acronimo acroEsf ON Esfuerzo.fk_Acronimo=acroEsf.idAcronimo FULL JOIN TMA ON fk_Tma=idTma FULL JOIN Acronimo acroTma ON Tma.fk_Acronimo=acroTma.idAcronimo FULL JOIN SistColocacion ON fk_SistColoc=idSistColoc FULL JOIN TipoConsistencia ON Revenimiento.fk_TipoCons=TipoConsistencia.idTipoCons FULL JOIN TipoResistencia ON TipoResistencia.idTipoResist=ValorEsfuerzo.fk_TipoResist FULL JOIN CaracEspe ON fk_Concreto=idConcreto WHERE codigoOmc IS NOT NULL")
             listarConcreto =dictfetchall(cursor)
             return listarConcreto
     
@@ -390,6 +390,20 @@ class ListarAcerosRefuerzo(Authentication,viewsets.GenericViewSet):
     def get_queryset(self):
         with connection.cursor() as cursor:
             registros = cursor.execute("SELECT Materiales.codigoOmc AS CodigoOmc23,Materiales.Consecutivo,Materiales.descriCorta,Materiales.descriLarga,Materiales.Comentarios,Materiales.palabrasCve,Materiales.desCorEng,Materiales.desLargEng,Materiales.fuenteInf,Materiales.fecRegInf,Materiales.codigoBimsa,Omc23Nivel5.descriSpa AS Omniclass,Grado.valorGrad,Dimensiones.noVarilla,Dimensiones.diametro,Dimensiones.area,Dimensiones.perimetro,Dimensiones.masa,Esfuerzo.tipoEsfuerzo FROM Omc23Nivel5 JOIN  Materiales ON codigoOmc=Omc23Nivel5.Codigo JOIN AceroRefuerzo ON fk_Material=idMaterial JOIN Grado ON idGrado=fk_Grado JOIN Dimensiones ON fk_Dimensiones=idDimensiones JOIN Esfuerzo ON Esfuerzo.idEsfuerzo=AceroRefuerzo.fk_Esfuerzo")
+            registros = dictfetchall(cursor)
+            return registros
+        
+    def list(self, request):
+        data = self.get_queryset()
+        if data:
+            return Response(data, status = status.HTTP_200_OK)
+        else:
+            return Response({'mensaje':'No existen registros'}, status = status.HTTP_404_NOT_FOUND)
+
+class ListarMaterialContratista(Authentication,viewsets.GenericViewSet):
+    def get_queryset(self):
+        with connection.cursor() as cursor:
+            registros = cursor.execute("SELECT * FROM vw_materialContratista")
             registros = dictfetchall(cursor)
             return registros
         
