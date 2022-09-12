@@ -32,7 +32,7 @@ class VistaProveedor(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -41,7 +41,7 @@ class VistaProveedor(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status = status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -65,7 +65,7 @@ class VistaMarca(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -73,7 +73,7 @@ class VistaMarca(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status = status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -97,7 +97,7 @@ class VistaSectorMercado(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -105,7 +105,7 @@ class VistaSectorMercado(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status = status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -129,7 +129,7 @@ class VistaProveedorMarca(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -137,7 +137,7 @@ class VistaProveedorMarca(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status = status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -161,7 +161,7 @@ class VistaSucursalProv(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -169,7 +169,7 @@ class VistaSucursalProv(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status = status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -193,7 +193,7 @@ class VistaSectorProv(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -201,7 +201,7 @@ class VistaSectorProv(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status = status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -225,7 +225,7 @@ class VistaMaterialProveedor(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -233,7 +233,7 @@ class VistaMaterialProveedor(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status = status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos.'}, status = status.HTTP_404_NOT_FOUND)
     

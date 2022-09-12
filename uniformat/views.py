@@ -24,7 +24,7 @@ class UFTNivel1(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -32,7 +32,7 @@ class UFTNivel1(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -56,7 +56,7 @@ class UFTNivel2(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -64,7 +64,7 @@ class UFTNivel2(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -88,7 +88,7 @@ class UFTNivel3(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -96,7 +96,7 @@ class UFTNivel3(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -120,7 +120,7 @@ class UFTNivel4(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -128,7 +128,7 @@ class UFTNivel4(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -152,7 +152,7 @@ class UFTNivel5(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -160,7 +160,7 @@ class UFTNivel5(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro esos datos'}, status = status.HTTP_404_NOT_FOUND)
     

@@ -153,7 +153,7 @@ class UsuarioViewSet(Authentication,viewsets.GenericViewSet):
         user_serializer = self.serializer_class(data=request.data)
         if user_serializer.is_valid():
             user_serializer.save()
-            return Response(user_serializer.data, status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':user_serializer.data}, status = status.HTTP_201_CREATED)
         return Response({'error':user_serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
@@ -166,7 +166,7 @@ class UsuarioViewSet(Authentication,viewsets.GenericViewSet):
         user_serializer = EditarUsuarioSerializer(usuario, data=request.data)
         if user_serializer.is_valid():
             user_serializer.save()
-            return Response(user_serializer.data, status = status.HTTP_200_OK)
+            return Response({'mensaje':'Registro actualizado','data':user_serializer.data}, status = status.HTTP_200_OK)
         return Response({'error':user_serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def destroy(self, request, pk=None):
@@ -191,7 +191,7 @@ class VistaEmpleado(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -199,7 +199,7 @@ class VistaEmpleado(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -222,7 +222,7 @@ class VistaDatosLaborales(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -230,7 +230,7 @@ class VistaDatosLaborales(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -253,7 +253,7 @@ class VistaHistorialUsuario(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -261,7 +261,7 @@ class VistaHistorialUsuario(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un Registro con esos datos'}, status = status.HTTP_400_BAD_REQUEST)
     

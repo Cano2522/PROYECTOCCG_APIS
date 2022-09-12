@@ -26,7 +26,7 @@ class OMC35Nivel1(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -34,7 +34,7 @@ class OMC35Nivel1(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -59,7 +59,7 @@ class OMC35Nivel2(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -67,7 +67,7 @@ class OMC35Nivel2(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -92,7 +92,7 @@ class OMC35Nivel3(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -100,7 +100,7 @@ class OMC35Nivel3(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -125,7 +125,7 @@ class OMC35Nivel4(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -133,7 +133,7 @@ class OMC35Nivel4(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -158,7 +158,7 @@ class OMC35Nivel5(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -166,7 +166,7 @@ class OMC35Nivel5(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
@@ -191,7 +191,7 @@ class OMC35Nivel6(Authentication,viewsets.ModelViewSet):
         serializer = self.serializer_class(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            return Response({'mensaje':'Registro creado','data':serializer.data},status = status.HTTP_201_CREATED)
         return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
@@ -199,7 +199,7 @@ class OMC35Nivel6(Authentication,viewsets.ModelViewSet):
             serializer = self.serializer_class(self.get_queryset(pk), data = request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'mensaje':'Registro actualizado','data':serializer.data}, status=status.HTTP_200_OK)
             return Response({'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'No existe un registro con esos datos'}, status = status.HTTP_404_NOT_FOUND)
     
